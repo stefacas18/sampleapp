@@ -27,7 +27,7 @@ pipeline {
         junit '/target/failsafe-reports/*.xml'
       }
     }
-    stage('') {
+    stage('Analysis Static Code') {
       steps {
         sh 'mvn -DskipTest checkstyle:checkstyle pmd:pmd findbugs:findbugs'
         checkstyle(pattern: 'target/checkstyle-result.xml')
