@@ -35,5 +35,11 @@ pipeline {
         findbugs(pattern: 'target/findbugsXml.xml')
       }
     }
+    stage('Publish Artifacts') {
+      steps {
+        sh 'mvn clean package -DskipTests'
+        archiveArtifacts 'target/webapp*.jar'
+      }
+    }
   }
 }
